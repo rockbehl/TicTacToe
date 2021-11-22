@@ -87,6 +87,10 @@ public class root {
                 case 8 -> cordY = 1;
                 case 9 -> cordY = 2;
             }
+            if (cord > 9){
+                System.out.println("Invalid Area!");
+                continue;
+            }
             if(board[cordY][cordX] == 'X' || board[cordY][cordX] == 'O'){
                 System.out.println("This spot is occupied. Please try again");
                 continue;
@@ -148,7 +152,6 @@ public class root {
             }
         }
 
-        if (occupied>0) {
             for (int i = 0; i < board.length; i++) { //vertical checks
                 if ((board[i][1] == board[i][2] && board[i][1] == board[i][0]) && board[i][1] == 'O') {
                     System.out.println("COMP WIN");
@@ -165,8 +168,7 @@ public class root {
                 System.out.println("COMP WIN");
                 win = true;
             }
-        }
-        if (occupied>0) {
+
             for (int i = 0; i < board.length; i++) { //vertical checks
                 if ((board[i][1] == board[i][2] && board[i][1] == board[i][0]) && board[i][1] == 'X') {
                     System.out.println("YOU WIN");
@@ -183,8 +185,8 @@ public class root {
                 System.out.println("YOU WIN");
                 win = true;
             }
-        }
-        if (occupied == 0) { //player
+
+        if (occupied == 0 && !win) { //player
             System.out.println("TIE!");
             win = true;
         }
